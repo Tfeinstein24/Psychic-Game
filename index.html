@@ -96,9 +96,17 @@ document.getElementById('sofar').innerHTML = "Your Guesses so far: " + guessedLe
 document.getElementById('guessLeft').innerHTML = "Guesses Left: " + guessesLeft;
 guessesLeft--;
 
+var reset = function() {
+	wins = 0;
+	losses = 0;
+	guessesLeft = 9;
+	guessedLetters = [];
+}
+
+
 
 // Reset Function
-
+	
 
 // Create Wins and Losses
 	
@@ -107,6 +115,7 @@ guessesLeft--;
 		console.log(wins);
 		document.querySelector('#wins').innerHTML = "Wins: " + wins;
 		alert("Damn, son!");
+		reset();
 		
 		
 		// get DOM element thats supposed to display wins
