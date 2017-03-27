@@ -83,12 +83,13 @@ this.letterToGuess = this.getRandomLetter[Math.floor(Math.random() * this.getRan
 
 // Create User On-Click Event
 
-var UserGuess = document.onkeyup = function pressKey(event) {
-	console.log(event.key);
+document.onkeyup = function(event) {
+    console.log(event.key);
 
 
-
+var UserGuess = event.key;
 guessedLetters.push(UserGuess);
+document.getElementById('sofar').innerHTML = "Your Guesses so far: " + guessedLetters.join(", ");
 
 
 // Reset Function
@@ -96,7 +97,7 @@ guessedLetters.push(UserGuess);
 var reset = function() {
 totalGuesses = 9;
 guessesLeft = 9;
-guessedLetters = [0];
+guessedLetters = [];
 
 updateLetterToGuess();
 updateGuessesLeft();
