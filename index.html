@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psychic Game</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="assets/javascript/game.js"></script>
+
+</head>
+<body>
+
+<h1>The Psychic Game</h1>
+<br>
+<h4>Guess what letter I'm thinking of</h4>
+
+<div id="psychicgame">
+          <ul class="list-group">
+            <li class="list-group-item"><p id="wins">Wins: </p></li>
+            <li class="list-group-item"><p id="losses">Losses: </p></li>
+            <li class="list-group-item"><p id="guessLeft">Guesses Left: </p></li>
+            <li class="list-group-item"><p id="sofar">Your Guesses so far: </p></li>
+          </ul>  
+        </div>
+
+<div id="Random-Letter"></div>
+
+<script type="text/javascript">
+
+
+
+// Create Array of Letters
+
+var alphabet = [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y",
+"z"
+];
+
+// Set Counters to Zero
+
+var wins = 0;
+var losses = 0;
+var guesses = 9;
+var guessesLeft = 9;
+var guessedLetters = [];
+var letterToGuess = null;
+
+// Computer Generates Random Letter
+
+var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+console.log(getRandomLetter);
+
+var updateGuessesLeft = function() {
+	document.querySelector('#guessLeft').innerHTML = "Guesses left: " + guessesLeft;
+};
+
+var updateLetterToGuess = function() {
+this.letterToGuess = this.getRandomLetter[Math.floor(Math.random() * this.getRandomLetter.length)];
+};
+
+var updateGuessesSoFar = function() {
+document.querySelector('#sofar').innerHTML = "Your Guesses So Far: " + guessedLetters.join(', ');
+};
+
+// Create User On-Click Event
+
+document.onkeyup = function pressKey(event) {
+	console.log(event.key);
+
+
+
+// Reset Function
+
+var reset = function() {
+totalGuesses = 9;
+guessesLeft = 9;
+guessedLetters = [0];
+
+updateLetterToGuess();
+updateGuessesLeft();
+updateGuessesSoFar();
+}
+
+updateLetterToGuess();
+updateGuessesLeft();
+
+// Create Wins and Losses
+	
+	if (event.key == getRandomLetter) {
+		wins++;
+		guessesLeft--;
+		console.log(wins);
+		document.querySelector('#wins').innerHTML = "Wins: " + wins;
+		alert("Damn, son!");
+		reset();
+		
+		// get DOM element thats supposed to display wins
+		// set its html equal to the wins variable
+	}
+
+	else {
+		losses++;
+		guessesLeft--;
+		console.log(losses);
+		document.querySelector('#losses').innerHTML = "Losses: " + losses; 
+		alert("You suck!");
+		reset();
+
+	
+	}
+};
+
+
+
+
+	
+
+
+// Keep Log of guessedLetters
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>
