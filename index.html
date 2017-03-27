@@ -72,13 +72,13 @@ var letterToGuess = null;
 var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
 console.log(getRandomLetter);
 
-var updateGuessesLeft = function() {
-	document.querySelector('#guessLeft').innerHTML = "Guesses left: " + guessesLeft;
-};
+
 
 var updateLetterToGuess = function() {
 this.letterToGuess = this.getRandomLetter[Math.floor(Math.random() * this.getRandomLetter.length)];
 };
+
+
 
 
 // Create User On-Click Event
@@ -86,25 +86,19 @@ this.letterToGuess = this.getRandomLetter[Math.floor(Math.random() * this.getRan
 document.onkeyup = function(event) {
     console.log(event.key);
 
-
+// Update User Guesses so far
 var UserGuess = event.key;
 guessedLetters.push(UserGuess);
 document.getElementById('sofar').innerHTML = "Your Guesses so far: " + guessedLetters.join(", ");
 
+// Update Guesses Left
+
+document.getElementById('guessLeft').innerHTML = "Guesses Left: " + guessesLeft;
+guessesLeft--;
+
 
 // Reset Function
 
-var reset = function() {
-totalGuesses = 9;
-guessesLeft = 9;
-guessedLetters = [];
-
-updateLetterToGuess();
-updateGuessesLeft();
-}
-
-updateLetterToGuess();
-updateGuessesLeft();
 
 // Create Wins and Losses
 	
@@ -113,7 +107,7 @@ updateGuessesLeft();
 		console.log(wins);
 		document.querySelector('#wins').innerHTML = "Wins: " + wins;
 		alert("Damn, son!");
-		reset();
+		
 		
 		// get DOM element thats supposed to display wins
 		// set its html equal to the wins variable
@@ -122,11 +116,10 @@ updateGuessesLeft();
 
 	else {
 		losses++;
-		document.querySelector('#guessLeft').innerHTML = "Guesses Left: " - guessesLeft;
 		console.log(losses);
 		document.querySelector('#losses').innerHTML = "Losses: " + losses; 
 		alert("You suck!");
-		reset();
+		
 	}
 
 	
