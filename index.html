@@ -115,7 +115,6 @@ var reset = function() {
 		console.log(wins);
 		document.querySelector('#wins').innerHTML = "Wins: " + wins;
 		alert("Damn, son!");
-		reset();
 		
 		
 		// get DOM element thats supposed to display wins
@@ -128,8 +127,14 @@ var reset = function() {
 		console.log(losses);
 		document.querySelector('#losses').innerHTML = "Losses: " + losses; 
 		alert("You suck!");
-		
+
+		}
+
+	if (guessesLeft == 0) {
+		reset();
+		window.location.reload();
 	}
+	
 
 	
 
