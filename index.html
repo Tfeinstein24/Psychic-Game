@@ -80,15 +80,15 @@ var updateLetterToGuess = function() {
 this.letterToGuess = this.getRandomLetter[Math.floor(Math.random() * this.getRandomLetter.length)];
 };
 
-var updateGuessesSoFar = function() {
-document.querySelector('#sofar').innerHTML = "Your Guesses So Far: " + guessedLetters.join(', ');
-};
 
 // Create User On-Click Event
 
-document.onkeyup = function pressKey(event) {
+var UserGuess = document.onkeyup = function pressKey(event) {
 	console.log(event.key);
 
+
+
+guessedLetters.push(UserGuess);
 
 
 // Reset Function
@@ -100,7 +100,6 @@ guessedLetters = [0];
 
 updateLetterToGuess();
 updateGuessesLeft();
-updateGuessesSoFar();
 }
 
 updateLetterToGuess();
@@ -110,7 +109,6 @@ updateGuessesLeft();
 	
 	if (event.key == getRandomLetter) {
 		wins++;
-		guessesLeft--;
 		console.log(wins);
 		document.querySelector('#wins').innerHTML = "Wins: " + wins;
 		alert("Damn, son!");
@@ -120,16 +118,20 @@ updateGuessesLeft();
 		// set its html equal to the wins variable
 	}
 
+
 	else {
 		losses++;
-		guessesLeft--;
+		document.querySelector('#guessLeft').innerHTML = "Guesses Left: " - guessesLeft;
 		console.log(losses);
 		document.querySelector('#losses').innerHTML = "Losses: " + losses; 
 		alert("You suck!");
 		reset();
+	}
 
 	
-	}
+
+	
+	
 };
 
 
