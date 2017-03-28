@@ -70,13 +70,9 @@ var letterToGuess = null;
 // Computer Generates Random Letter
 
 var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+	
 console.log(getRandomLetter);
 
-
-
-var updateLetterToGuess = function() {
-this.letterToGuess = this.getRandomLetter[Math.floor(Math.random() * this.getRandomLetter.length)];
-};
 
 
 
@@ -101,6 +97,7 @@ var reset = function() {
 	losses = 0;
 	guessesLeft = 9;
 	guessedLetters = [];
+	
 }
 
 
@@ -116,9 +113,6 @@ var reset = function() {
 		document.querySelector('#wins').innerHTML = "Wins: " + wins;
 		alert("Damn, son!");
 		
-		
-		// get DOM element thats supposed to display wins
-		// set its html equal to the wins variable
 	}
 
 
@@ -132,8 +126,8 @@ var reset = function() {
 
 	if (guessesLeft == 0) {
 		reset();
-		window.location.reload();
 	}
+
 	
 
 	
