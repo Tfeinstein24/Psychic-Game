@@ -77,6 +77,7 @@ console.log(getRandomLetter);
 
 
 
+
 // Create User On-Click Event
 
 document.onkeyup = function(event) {
@@ -110,8 +111,10 @@ var reset = function() {
 	if (event.key == getRandomLetter) {
 		wins++;
 		console.log(wins);
+		getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
 		document.querySelector('#wins').innerHTML = "Wins: " + wins;
 		alert("Damn, son!");
+		
 		
 	}
 
